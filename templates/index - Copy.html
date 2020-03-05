@@ -1,0 +1,102 @@
+<!doctype html>
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{{ url_for('static',filename='js/functions.js') }}"></script>
+</head>
+<body>
+    <title>Sube tu foto!</title>
+    
+    <div class="wrapper">
+        <header>
+            <h1>Stock photo</h1>
+            <span>ID: 5988014</span>
+        </header>
+
+        <div class="ways">
+            <ul>
+              <li class="active">
+                submit
+              </li>
+              <li>
+                discussion
+              </li>
+            </ul>
+        </div>
+
+        <div class="sections">
+
+        <section class="active">
+          <input type="text" placeholder="Title" id="title"/>
+          <select id="category">
+            <option value="summmer">summer</option>
+            <option value="winter">winter</option>
+            <option value="working">working</option>
+            <option value="road">road</option>
+          </select>
+          
+          <div class="select-option">
+            <div class="head">Category</div>
+            <div class="option"></div>
+          </div>
+          
+          
+          <div class="images">
+            <div class="pic">
+              add
+            </div>
+          </div>
+          
+          
+        </section>
+
+        <section>
+          <input type="text" placeholder="Topic" id="topic"/>
+          <textarea placeholder="something..." id="msg"></textarea>
+        </section>
+
+        </div>
+
+        <footer>
+        <ul>
+          <li><span id="reset">reset</span></li>
+          <li><span id="send">send</span></li>
+        </ul>
+        </footer> 
+
+    </div>
+    
+    <div class="notification"></div>
+    <footer>
+    Inspiration: <a href="https://dribbble.com/shots/2092775-Create-a-new-collection"><i class="fa fa-dribbble" aria-hidden="true"></i>dribbble</a>
+    </footer>
+
+</body>
+
+
+
+<h2>Select file(s) to upload</h2>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul class=flashes>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="files[]" multiple="true" autocomplete="off" required style='border: 2px dashed #0087F7; margin: 10%; min-height: 100px;'>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Submit">
+	</p>
+</form>
+
+
+
