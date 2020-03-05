@@ -1,0 +1,52 @@
+<!doctype html>
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{{ url_for('static',filename='js/functions.js') }}"></script>
+</head>
+<body>
+    <title>Sube tu foto!</title>
+    
+<div class="wrapper">
+    <h1>Selecciona archivos de imágenes para subir</h1>
+    <form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="text" placeholder="Nombre(s)" name="nombre" required />
+            </p>
+            <p>
+                <input type="text" placeholder="Apellido Paterno" name="apellidop" required />
+            </p>        
+            <p>
+                <input type="text" placeholder="Apellido Materno" name="apellidom" />
+            </p>   
+            <p>
+                <input type="email" placeholder="Correo electrónico" name="correo" required />
+            </p>
+            <p>
+                <input type="text" placeholder="Sector/localidad" name="localidad" required />
+            </p>
+            <p>
+                <input type="file" name="files[]" multiple="true" autocomplete="off" style='border: 2px dashed #0087F7; margin: 5%; min-height: 30px;' required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="Enviar">
+        </p>
+    </form>
+</div>
+
+<!-- <div class="wrapper" style="display: none;"> -->
+<div class="wrapper" id="results">
+     {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</div>
+
+</body>
